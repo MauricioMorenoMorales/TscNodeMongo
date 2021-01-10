@@ -4,8 +4,10 @@ const router: Router = Router()
 
 import { booksController } from '../controllers/books.controller'
 
-router.get('/books', booksController.index)
+router.get('/', booksController.index)
 
-router.get('/books/add', booksController.renderFormBook)
+router.get('/add', booksController.renderFormBook)
+
+router.post('/add', booksController.saveBook)
 
 export default router

@@ -11,6 +11,11 @@ class BooksController {
 			title: 'Add a Book',
 		})
 	}
+
+	public saveBook(req: Request, res: Response) {
+		console.log(req.body)
+		res.send('Recibido xd')
+	}
 }
 
 export const booksController = new BooksController()

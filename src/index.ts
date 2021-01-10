@@ -4,9 +4,11 @@ import path from 'path'
 
 //Modulos locales
 import IndexRoutes from './routes/index.routes'
+import BooksRoutes from './routes/books.routes'
 
 //Inicializaciones
 const app = express()
+import './database'
 
 //Settings
 app.set('port', process.env.PORT || 3000)
@@ -29,7 +31,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 //Routes
-app.use('/books', IndexRoutes)
+app.use('/', IndexRoutes)
+app.use('/books', BooksRoutes)
 
 //Static files
 app.use(express.static(path.join(__dirname, 'public')))
