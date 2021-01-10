@@ -3,7 +3,7 @@ import exphbs from 'express-handlebars' //? Si no funciona o sale rojo importa s
 import path from 'path'
 
 //Modulos locales
-import IndexRoutes from './routes/'
+import IndexRoutes from './routes/index.routes'
 
 //Inicializaciones
 const app = express()
