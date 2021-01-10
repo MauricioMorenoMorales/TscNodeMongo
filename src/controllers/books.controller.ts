@@ -1,9 +1,14 @@
 import { Request, Response } from 'express'
 
+import bookModel, { Book } from '../models/Book.model'
+
 class BooksController {
-	public index(req: Request, res: Response) {
+	public async index(req: Request, res: Response): Promise<void> {
+		const books: Book[] = await bookModel.find().lean()
+		console.log(books)
 		res.render('books/index', {
 			title: 'Books',
+			books,
 		})
 	}
 	public renderFormBook(req: Request, res: Response) {
@@ -12,9 +17,11 @@ class BooksController {
 		})
 	}
 
-	public saveBook(req: Request, res: Response) {
-		console.log(req.body)
-		res.send('Recibido xd')
+	public async saveBook(req: Request, res: Response) {
+		const { title, author, isbn } = req.body
+		const book: Book = new bookModel({ title, author, isbn })
+		await book.save()
+		res.redirect('/books')
 	}
 }
 
